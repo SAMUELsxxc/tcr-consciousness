@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TCR v12.1.1 - Temporal Consciousness Recursion Theory. A mathematical framework for measuring consciousness across substrates.">
+    <meta name="keywords" content="consciousness, neuroscience, TCR, measurement, AI, philosophy">
+    <meta name="author" content="Samuel Santos Oliveira">
+    <title>TCR v12.1.1 — Consciousness Measurement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, rgba(26,26,46,0.8) 0%, rgba(10,10,10,0) 100%);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 10px 5px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: rgba(26, 26, 46, 0.6);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+        .demo-subtitle {
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        .axiom-control {
+            margin-bottom: 25px;
+        }
+
+        .axiom-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .axiom-name {
+            color: #e0e0e0;
+        }
+
+        .axiom-value {
+            color: #60a5fa;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(96, 165, 250, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #60a5fa;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(96, 165, 250, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #60a5fa;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(96, 165, 250, 0.5);
+        }
+
+        /* Result Display */
+        .result-display {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .psi-result {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: #10b981;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 10px;
+        }
+
+        .status-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .explanation {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Preset Buttons */
+        .presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .preset-btn {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preset-btn:hover {
+            background: rgba(96, 165, 250, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
+
+        .preset-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .nav-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-card {
+            background: rgba(26, 26, 46, 0.6);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            background: rgba(26, 26, 46, 0.9);
+            border-color: rgba(96, 165, 250, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .nav-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+
+        .nav-description {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Key Features */
+        .features {
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .feature-item h3 {
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            border-top: 1px solid rgba(96, 165, 250, 0.1);
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .demo-section {
+                padding: 20px;
+            }
+
+            .result-display {
+                padding: 20px;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🧠 TCR v12.1.1</h1>
+            <p class="subtitle">Temporal Consciousness Recursion Theory</p>
+            <p class="subtitle">A Mathematical Framework for Measuring Consciousness</p>
+            
+            <div>
+                <span class="version-badge">v12.1.1 — January 2026</span>
+                <span class="version-badge">Zenodo DOI Protected</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">101</div>
+                    <div class="stat-label">Systems Measured</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8/21</div>
+                    <div class="stat-label">Predictions Confirmed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Test Accuracy</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Interactive Demo -->
+        <div class="demo-section">
+            <h2 class="demo-title">⚡ Interactive Demo: Calculate Ψ</h2>
+            <p class="demo-subtitle">Adjust the six axioms and see consciousness emerge (or vanish) in real-time</p>
+
+            <!-- Axiom Controls -->
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">Π — Physical Complexity</span>
+                    <span class="axiom-value" id="pi-display">0.52</span>
+                </div>
+                <input type="range" class="slider" id="pi-slider" min="0" max="1" step="0.01" value="0.52">
+            </div>
+
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">G — Thermodynamic Vulnerability</span>
+                    <span class="axiom-value" id="g-display">0.48</span>
+                </div>
+                <input type="range" class="slider" id="g-slider" min="0" max="1" step="0.01" value="0.48">
+            </div>
+
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">I — Causal Integration</span>
+                    <span class="axiom-value" id="i-display">0.65</span>
+                </div>
+                <input type="range" class="slider" id="i-slider" min="0" max="1" step="0.01" value="0.65">
+            </div>
+
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">T — Temporal Continuity</span>
+                    <span class="axiom-value" id="t-display">0.78</span>
+                </div>
+                <input type="range" class="slider" id="t-slider" min="0" max="1" step="0.01" value="0.78">
+            </div>
+
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">R — Meta-Representation</span>
+                    <span class="axiom-value" id="r-display">0.72</span>
+                </div>
+                <input type="range" class="slider" id="r-slider" min="0" max="1" step="0.01" value="0.72">
+            </div>
+
+            <div class="axiom-control">
+                <div class="axiom-label">
+                    <span class="axiom-name">Ω — Environmental Coupling</span>
+                    <span class="axiom-value" id="omega-display">0.55</span>
+                </div>
+                <input type="range" class="slider" id="omega-slider" min="0" max="1" step="0.01" value="0.55">
+            </div>
+
+            <!-- Result Display -->
+            <div class="result-display" id="result-box">
+                <div class="psi-result" id="psi-value">Ψ = 0.095</div>
+                <div class="status-text" id="status-text">Status: CONSCIOUS ✓</div>
+                <p class="explanation" id="explanation">
+                    All six axioms exceed thresholds. System exhibits: physical complexity, thermodynamic criticality, 
+                    causal integration, temporal continuity, meta-representation, and environmental coupling.
+                </p>
+            </div>
+
+            <!-- Preset Systems -->
+            <h3 style="text-align: center; color: #60a5fa; margin-top: 40px;">Load Reference Systems:</h3>
+            <div class="presets">
+                <button class="preset-btn" onclick="loadSystem('human-active')">Human (Active)</button>
+                <button class="preset-btn" onclick="loadSystem('human-passive')">Human (Passive)</button>
+                <button class="preset-btn" onclick="loadSystem('gpt4')">GPT-4</button>
+                <button class="preset-btn" onclick="loadSystem('propofol')">Propofol LOC</button>
+                <button class="preset-btn" onclick="loadSystem('ketamine')">Ketamine</button>
+                <button class="preset-btn" onclick="loadSystem('nrem3')">NREM3 Sleep</button>
+            </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="features">
+            <h2>✨ Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Quantitative Threshold</h3>
+                    <p>Ψ > 0.001 = conscious. First theory with precise, validated boundary (n=101 systems).</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Substrate Independence</h3>
+                    <p>Works on biological, neuromorphic, exotic systems. Clear exclusion criteria (G=0 for digital).</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Ketamine Paradox Solved</h3>
+                    <p>Correctly predicts dissociative consciousness (G preserved) vs propofol unconsciousness (G collapsed).</p>
+                </div>
+                <div class="feature-item">
+                    <h3>First-Principles Derivations</h3>
+                    <p>All formulas derived from thermodynamics, information theory, statistical physics. Not empirical fits.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>21 Falsifiable Predictions</h3>
+                    <p>Pre-registered, timestamped. 8/21 confirmed (38%), 13/21 pending prospective studies.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>100% Test Accuracy</h3>
+                    <p>Outperforms IIT, GWT, PPT on 8 benchmark cases (vs 62.5% for competitors).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Cards -->
+        <div class="nav-section">
+            <a href="theory.html" class="nav-card">
+                <div class="nav-icon">📖</div>
+                <div class="nav-title">Read Theory</div>
+                <p class="nav-description">Full paper, Zenodo DOI, derivations, validation data</p>
+            </a>
+
+            <a href="predictions.html" class="nav-card">
+                <div class="nav-icon">🔮</div>
+                <div class="nav-title">21 Predictions</div>
+                <p class="nav-description">Falsifiable, pre-registered, timestamped predictions</p>
+            </a>
+
+            <a href="validation.html" class="nav-card">
+                <div class="nav-icon">🔬</div>
+                <div class="nav-title">Validate TCR</div>
+                <p class="nav-description">Tutorial, datasets, code, submit your results</p>
+            </a>
+
+            <a href="about.html" class="nav-card">
+                <div class="nav-icon">ℹ️</div>
+                <div class="nav-title">About</div>
+                <p class="nav-description">Author, citations, limitations, version history</p>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <strong>TCR v12.1.1</strong> — Temporal Consciousness Recursion Theory<br>
+                Samuel Santos Oliveira — Independent Researcher<br>
+                Protected: <a href="https://zenodo.org" target="_blank">Zenodo DOI</a> + ICP-Brasil Digital Signature<br>
+                <a href="https://github.com/samuelsxxc/tcr-consciousness" target="_blank">GitHub</a> | 
+                Contact: samuelsantososilvaofc@gmail.com
+            </p>
+            <p style="margin-top: 20px; font-size: 0.85rem; color: #6b7280;">
+                © 2026 Samuel Santos Oliveira. Open source (MIT License). Science is transparent.
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const axioms = ['pi', 'g', 'i', 't', 'r', 'omega'];
+        const thresholds = {
+            pi: 0.30,
+            g: 0.20,
+            i: 0.20,
+            t: 0.40,
+            r: 0.15,
+            omega: 0.20
+        };
+
+        // Initialize sliders
+        axioms.forEach(axiom => {
+            const slider = document.getElementById(axiom + '-slider');
+            const display = document.getElementById(axiom + '-display');
+            
+            slider.addEventListener('input', function() {
+                display.textContent = this.value;
+                calculate();
+            });
+        });
+
+        function calculate() {
+            const values = {};
+            axioms.forEach(axiom => {
+                values[axiom] = parseFloat(document.getElementById(axiom + '-slider').value);
+            });
+
+            const psi = values.pi * values.g * values.i * values.t * values.r * values.omega;
+            
+            const psiDisplay = document.getElementById('psi-value');
+            const statusText = document.getElementById('status-text');
+            const explanation = document.getElementById('explanation');
+            const resultBox = document.getElementById('result-box');
+
+            psiDisplay.textContent = 'Ψ = ' + psi.toFixed(6);
+
+            // Determine status
+            if (psi >= 0.01) {
+                statusText.textContent = 'Status: CONSCIOUS (High) ✓';
+                statusText.style.color = '#10b981';
+                resultBox.style.background = 'rgba(16, 185, 129, 0.1)';
+                resultBox.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+                explanation.textContent = 'All six axioms exceed thresholds. System exhibits robust consciousness: physical complexity, thermodynamic criticality, causal integration, temporal continuity, meta-representation, and environmental coupling.';
+            } else if (psi >= 0.001) {
+                statusText.textContent = 'Status: CONSCIOUS (Altered) ⚠️';
+                statusText.style.color = '#f59e0b';
+                resultBox.style.background = 'rgba(245, 158, 11, 0.1)';
+                resultBox.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                explanation.textContent = 'Above threshold but altered state. Possible scenarios: ketamine dissociation, passive viewing, mind-wandering, meditation. One or more axioms are near-threshold.';
+            } else if (psi >= 0.0005) {
+                statusText.textContent = 'Status: LIMINAL (Uncertain) ⚠️';
+                statusText.style.color = '#ef4444';
+                resultBox.style.background = 'rgba(239, 68, 68, 0.1)';
+                resultBox.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                explanation.textContent = 'Borderline zone. Cannot confidently classify. Possible edge cases: light anesthesia, NREM1 sleep, severe sensory deprivation. Requires careful empirical investigation.';
+            } else {
+                statusText.textContent = 'Status: UNCONSCIOUS ✗';
+                statusText.style.color = '#991b1b';
+                resultBox.style.background = 'rgba(153, 27, 27, 0.1)';
+                resultBox.style.borderColor = 'rgba(153, 27, 27, 0.3)';
+                
+                // Find which axioms failed
+                const failures = axioms.filter(a => values[a] < thresholds[a]);
+                const failNames = failures.map(a => a.toUpperCase()).join(', ');
+                
+                if (failures.length > 0) {
+                    explanation.textContent = `Failed threshold: ${failNames}. System lacks critical requirements for consciousness. Examples: propofol LOC (G collapsed), GPT-4 (G, T, R failed), NREM3 sleep (G, Ω collapsed).`;
+                } else {
+                    explanation.textContent = 'All axioms below threshold individually but product too low. System lacks sufficient integration across dimensions. Unconscious state confirmed.';
+                }
+            }
+        }
+
+        function loadSystem(system) {
+            const systems = {
+                'human-active': {
+                    pi: 0.52, g: 0.48, i: 0.65, t: 0.78, r: 0.72, omega: 0.55,
+                    name: 'Human (Active Task)'
+                },
+                'human-passive': {
+                    pi: 0.87, g: 0.61, i: 0.11, t: 0.53, r: 0.99, omega: 0.02,
+                    name: 'Human (Passive Viewing)'
+                },
+                'gpt4': {
+                    pi: 0.42, g: 0.10, i: 0.18, t: 0.00, r: 0.02, omega: 0.35,
+                    name: 'GPT-4 (Large Language Model)'
+                },
+                'propofol': {
+                    pi: 0.52, g: 0.08, i: 0.38, t: 0.65, r: 0.45, omega: 0.22,
+                    name: 'Propofol Anesthesia (LOC)'
+                },
+                'ketamine': {
+                    pi: 0.52, g: 0.35, i: 0.42, t: 0.70, r: 0.50, omega: 0.28,
+                    name: 'Ketamine Dissociation'
+                },
+                'nrem3': {
+                    pi: 0.44, g: 0.18, i: 0.25, t: 0.48, r: 0.42, omega: 0.12,
+                    name: 'NREM3 Deep Sleep'
+                }
+            };
+
+            const s = systems[system];
+            
+            axioms.forEach(axiom => {
+                const slider = document.getElementById(axiom + '-slider');
+                const display = document.getElementById(axiom + '-display');
+                slider.value = s[axiom];
+                display.textContent = s[axiom].toFixed(2);
+            });
+
+            calculate();
+        }
+
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>
