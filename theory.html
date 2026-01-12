@@ -1,0 +1,570 @@
+# 🎉 EXCELENTE! Agora vem o segundo arquivo.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TCR v12.1.1 Theory - Complete mathematical framework, axioms, derivations, and validation data">
+    <title>Theory — TCR v12.1.1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 46, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #60a5fa;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(96, 165, 250, 0.2);
+        }
+
+        nav a.active {
+            background: rgba(96, 165, 250, 0.3);
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .section {
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        h2 {
+            color: #60a5fa;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #a78bfa;
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+        }
+
+        .formula {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #10b981;
+        }
+
+        .axiom-card {
+            background: rgba(96, 165, 250, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .axiom-card h4 {
+            color: #60a5fa;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .axiom-card .threshold {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            padding: 5px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .download-box {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+            border: 2px solid rgba(96, 165, 250, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .download-box h3 {
+            margin-top: 0;
+            color: #60a5fa;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #60a5fa;
+            color: #0a0a0a;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(96, 165, 250, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(96, 165, 250, 0.3);
+        }
+
+        .citation-box {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .citation-box h4 {
+            color: #60a5fa;
+            font-family: -apple-system, sans-serif;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        tr:hover {
+            background: rgba(96, 165, 250, 0.05);
+        }
+
+        .highlight {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning h4 {
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            border-top: 1px solid rgba(96, 165, 250, 0.1);
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 20px;
+            }
+
+            .formula {
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📖 Theory</h1>
+            <p class="subtitle">Complete Mathematical Framework — TCR v12.1.1</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html">🏠 Home</a>
+            <a href="theory.html" class="active">📖 Theory</a>
+            <a href="predictions.html">🔮 Predictions</a>
+            <a href="validation.html">🔬 Validation</a>
+            <a href="about.html">ℹ️ About</a>
+        </nav>
+
+        <!-- Download Section -->
+        <div class="download-box">
+            <h3>📥 Access Full Paper</h3>
+            <p style="color: #9ca3af; margin: 15px 0;">
+                Complete theory with derivations, protocols, validation data (101 systems)
+            </p>
+            <a href="https://zenodo.org" target="_blank" class="btn">
+                📄 Download PDF (Zenodo DOI)
+            </a>
+            <a href="https://github.com/samuelsxxc/tcr-consciousness" target="_blank" class="btn btn-secondary">
+                💻 View on GitHub
+            </a>
+            <p style="color: #6b7280; margin-top: 20px; font-size: 0.9rem;">
+                Protected: Zenodo DOI + ICP-Brasil Digital Signature<br>
+                License: CC-BY-4.0 (Open Access)
+            </p>
+        </div>
+
+        <!-- Overview -->
+        <div class="section">
+            <h2>🧠 Theory Overview</h2>
+            <p>
+                <strong>Temporal Consciousness Recursion (TCR)</strong> is a unified physical framework 
+                that defines consciousness via six measurable axioms grounded in thermodynamics, 
+                information theory, and temporal dynamics.
+            </p>
+
+            <h3>Central Formula</h3>
+            <div class="formula">
+                Ψ = Π × G × I × T × R × Ω
+            </div>
+            <p style="text-align: center; color: #9ca3af;">
+                Where Ψ (consciousness index) is the multiplicative product of six axioms.<br>
+                <span class="highlight">Threshold: Ψ > 0.001 = conscious</span>
+            </p>
+
+            <h3>Key Achievements</h3>
+            <ul style="color: #9ca3af; line-height: 2;">
+                <li>✅ <strong>Quantitative threshold:</strong> Ψ<sub>crit</sub> = 0.001 ± 0.0003 (bootstrap validated, n=101)</li>
+                <li>✅ <strong>Resolves ketamine paradox:</strong> Correctly predicts dissociative consciousness (G preserved)</li>
+                <li>✅ <strong>Substrate independence:</strong> Biological, neuromorphic, exotic systems (with constraints)</li>
+                <li>✅ <strong>First-principles derivations:</strong> All formulas from thermodynamics, not empirical fits</li>
+                <li>✅ <strong>100% test accuracy:</strong> 8/8 cases (vs 62.5% for IIT/GWT/PPT)</li>
+                <li>✅ <strong>21 falsifiable predictions:</strong> 8/21 confirmed (38%), 13/21 pending</li>
+            </ul>
+        </div>
+
+        <!-- The Six Axioms -->
+        <div class="section">
+            <h2>⚛️ The Six Axioms</h2>
+            <p style="color: #9ca3af; margin-bottom: 30px;">
+                Consciousness emerges when a physical system satisfies <strong>all six conditions simultaneously</strong>. 
+                Failure of any single axiom drives Ψ → 0 (multiplicative formula).
+            </p>
+
+            <!-- Axiom 1 -->
+            <div class="axiom-card">
+                <h4>Π — Physical Complexity</h4>
+                <div class="threshold">Threshold: Π > 0.30</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> Sufficient functional diversity and configurational entropy 
+                    to support rich information processing.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> Π = √(η<sub>functional</sub> × ρ<sub>config</sub>)<br>
+                    <strong>Human value:</strong> 0.52 (68 cortical regions, high state repertoire)<br>
+                    <strong>Failure example:</strong> Thermostat (Π ≈ 0.05), C. elegans (Π ≈ 0.10)
+                </p>
+            </div>
+
+            <!-- Axiom 2 -->
+            <div class="axiom-card">
+                <h4>G — Thermodynamic Vulnerability</h4>
+                <div class="threshold">Threshold: G > 0.20</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> Operation at edge-of-chaos with sustained entropy production, 
+                    thermodynamic vulnerability, and autonomous regulation. Constrained to T > 10 K.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> G = [max(G<sub>irrev</sub>, G<sub>val</sub>)]<sup>2/3</sup> × G<sub>auto</sub><sup>1/3</sup> × G<sub>local</sub><br>
+                    <strong>Human value:</strong> 0.48 (edge-of-chaos criticality)<br>
+                    <strong>Failure example:</strong> Digital computers (G ≈ 0.10, no homeostasis), Propofol LOC (G = 0.08, burst-suppression)
+                </p>
+            </div>
+
+            <!-- Axiom 3 -->
+            <div class="axiom-card">
+                <h4>I — Causal Integration</h4>
+                <div class="threshold">Threshold: I > 0.20</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> Information flow between subsystems such that the whole 
+                    cannot be decomposed into independent parts without loss of function.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> I = median(I<sub>MI</sub>, I<sub>PCI</sub>, I<sub>lesion</sub>, I<sub>MIP</sub>)<br>
+                    <strong>Human value:</strong> 0.65 (active task), 0.11 (passive viewing)<br>
+                    <strong>Failure example:</strong> Feedforward neural networks (I ≈ 0.05)
+                </p>
+            </div>
+
+            <!-- Axiom 4 -->
+            <div class="axiom-card">
+                <h4>T — Temporal Continuity</h4>
+                <div class="threshold">Threshold: T > 0.40</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> Smooth evolution of states over time with memory-dependent 
+                    dynamics connecting past, present, and anticipated future.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> T = √(τ<sub>trans</sub> × τ<sub>ret</sub>)<br>
+                    <strong>Human value:</strong> 0.78 (temporal flow intact)<br>
+                    <strong>Failure example:</strong> Stateless systems (T = 0), Patient H.M. (T = 0.21, no new memories)
+                </p>
+            </div>
+
+            <!-- Axiom 5 -->
+            <div class="axiom-card">
+                <h4>R — Meta-Representation</h4>
+                <div class="threshold">Threshold: R > 0.15</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> A subsystem that models the system's own states—a "self-model" 
+                    enabling meta-awareness distinct from first-order processing.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> R = [MI(S, M<sub>self</sub>) / MI<sub>max</sub>] × f<sub>meta</sub><br>
+                    <strong>Human value:</strong> 0.72 (mPFC as meta-hub), 0.99 (passive viewing, DMN dominance)<br>
+                    <strong>Failure example:</strong> GPT-4 (R = 0.02, no true meta-representation)
+                </p>
+            </div>
+
+            <!-- Axiom 6 -->
+            <div class="axiom-card">
+                <h4>Ω — Environmental Coupling</h4>
+                <div class="threshold">Threshold: Ω > 0.20</div>
+                <p style="margin-top: 15px;">
+                    <strong>Definition:</strong> Bidirectional information flow with the external environment—
+                    perception of unpredictable stimuli and action upon the world.
+                </p>
+                <p style="color: #9ca3af; margin-top: 10px;">
+                    <strong>Formula:</strong> Ω = √(C<sub>1</sub>) × √(C<sub>2</sub>) [surprise AND tracking]<br>
+                    <strong>Human value:</strong> 0.55 (active exploration), 0.02 (passive viewing)<br>
+                    <strong>Failure example:</strong> Brain-in-vat (Ω ≈ 0), Dreamless sleep (Ω = 0.05)
+                </p>
+            </div>
+        </div>
+
+        <!-- Empirical Validation -->
+        <div class="section">
+            <h2>✅ Empirical Validation (n=101)</h2>
+            
+            <h3>Primary Data: UCLA Consortium (n=20)</h3>
+            <p style="color: #9ca3af;">
+                Passive viewing paradigm (Pixar film). Revealed active vs passive consciousness distinction:
+            </p>
+
+            <table>
+                <tr>
+                    <th>Axiom</th>
+                    <th>Active Task</th>
+                    <th>Passive Viewing</th>
+                    <th>Change</th>
+                </tr>
+                <tr>
+                    <td>Π (Complexity)</td>
+                    <td>0.52</td>
+                    <td>0.87</td>
+                    <td class="highlight">+67%</td>
+                </tr>
+                <tr>
+                    <td>G (Thermodynamic)</td>
+                    <td>0.48</td>
+                    <td>0.61</td>
+                    <td class="highlight">+27%</td>
+                </tr>
+                <tr>
+                    <td>I (Integration)</td>
+                    <td>0.65</td>
+                    <td>0.11</td>
+                    <td style="color: #ef4444;">-83%</td>
+                </tr>
+                <tr>
+                    <td>T (Temporal)</td>
+                    <td>0.78</td>
+                    <td>0.53</td>
+                    <td style="color: #f59e0b;">-32%</td>
+                </tr>
+                <tr>
+                    <td>R (Meta-rep)</td>
+                    <td>0.72</td>
+                    <td>0.99</td>
+                    <td class="highlight">+38%</td>
+                </tr>
+                <tr>
+                    <td>Ω (Environment)</td>
+                    <td>0.55</td>
+                    <td>0.02</td>
+                    <td style="color: #ef4444;">-96%</td>
+                </tr>
+                <tr style="font-weight: 600;">
+                    <td><strong>Ψ (Total)</strong></td>
+                    <td class="highlight">0.095</td>
+                    <td>0.0006</td>
+                    <td style="color: #ef4444;">-99.4%</td>
+                </tr>
+            </table>
+
+            <div class="warning">
+                <h4>⚠️ Discovery: Passive Consciousness</h4>
+                <p>
+                    Passive viewing reduces Ψ by 150× despite participants remaining phenomenally conscious. 
+                    Key: Integration (I) and environmental coupling (Ω) collapse, while meta-representation (R) 
+                    elevates. This aligns with mind-wandering phenomenology (DMN dominance, low external engagement).
+                </p>
+            </div>
+
+            <h3>Literature Reanalysis</h3>
+            <ul style="color: #9ca3af; line-height: 2;">
+                <li><strong>Anesthesia (n=42):</strong> Propofol LOC (Ψ = 0.00014), Ketamine dissociation (Ψ = 0.011)</li>
+                <li><strong>Sleep stages (n=28):</strong> NREM3 (Ψ = 0.00006), REM (Ψ = 0.012), NREM1 (Ψ = 0.0028)</li>
+                <li><strong>Cross-species (n=11):</strong> Macaques (Ψ = 0.065), Octopuses (Ψ = 0.005)</li>
+            </ul>
+
+            <p style="color: #9ca3af; margin-top: 20px;">
+                <strong>Total:</strong> 101 measurements across 15 consciousness states<br>
+                <strong>Accuracy:</strong> 100% (8/8 test cases) vs 62.5% (IIT/GWT/PPT)
+            </p>
+        </div>
+
+        <!-- Citation -->
+        <div class="section">
+            <h2>📚 How to Cite</h2>
+            
+            <div class="citation-box">
+                <h4>BibTeX</h4>
+                <pre>@article{tcr2026,
+  title={Temporal Consciousness Recursion Theory v12.1.1: 
+         A Unified Physical Framework for Measuring Consciousness},
+  author={Oliveira, Samuel Santos},
+  year={2026},
+  month={January},
+  doi={10.5281/zenodo.XXXXX},
+  url={https://tcr-consciousness.org},
+  note={Protected: Zenodo DOI + ICP-Brasil Digital Signature}
+}</pre>
+            </div>
+
+            <div class="citation-box">
+                <h4>APA 7th Edition</h4>
+                <p>
+                    Oliveira, S. S. (2026). <em>Temporal Consciousness Recursion Theory v12.1.1: 
+                    A unified physical framework for measuring consciousness</em>. 
+                    Zenodo. https://doi.org/10.5281/zenodo.XXXXX
+                </p>
+            </div>
+
+            <div class="citation-box">
+                <h4>Vancouver</h4>
+                <p>
+                    Oliveira SS. Temporal Consciousness Recursion Theory v12.1.1: A unified physical 
+                    framework for measuring consciousness. Zenodo. 2026 Jan. 
+                    doi:10.5281/zenodo.XXXXX
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <strong>TCR v12.1.1</strong> — Temporal Consciousness Recursion Theory<br>
+                <a href="index.html">Home</a> | 
+                <a href="predictions.html">Predictions</a> | 
+                <a href="validation.html">Validation</a> | 
+                <a href="about.html">About</a><br>
+                <a href="https://github.com/samuelsxxc/tcr-consciousness" target="_blank">GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
